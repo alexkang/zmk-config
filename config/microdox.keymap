@@ -9,6 +9,18 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+    behaviors {
+      ht: balanced_homerow_mods {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOLD_TAP";
+        #binding-cells = <2>;
+        tapping-term-ms = <150>;
+        quick-tap-ms = <150>;
+        flavor = "balanced";
+        bindings = <&kp>, <&kp>;
+      };
+    };
+
     keymap {
       compatible = "zmk,keymap";
 
