@@ -10,68 +10,89 @@
 
 / {
     behaviors {
-      ht: balanced_homerow_mods {
-        compatible = "zmk,behavior-hold-tap";
-        label = "HOLD_TAP";
-        #binding-cells = <2>;
-        tapping-term-ms = <150>;
-        quick-tap-ms = <150>;
-        flavor = "balanced";
-        bindings = <&kp>, <&kp>;
-      };
+        ht: balanced_homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <150>;
+            flavor = "balanced";
+            bindings =
+                <&kp>,
+                <&kp>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        Unlock {
+            bindings = <&to 0>;
+            key-positions = <35 32>;
+            layers = <4>;
+        };
     };
 
     keymap {
-      compatible = "zmk,keymap";
+        compatible = "zmk,keymap";
 
-      Base {
-        label = "Base";
-        bindings = <
-         &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P
-         &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI
-         &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH
-                    &kp LGUI &mo 1 &kp LSHFT &kp SPACE &mo 2 &kp RALT
-                   >;
-            };
+        Base {
+            label = "Base";
+            bindings = <
+      &kp Q        &kp W       &kp E  &kp R          &kp T      &kp Y  &kp U           &kp I          &kp O            &kp P
+      &kp A        &kp S       &kp D  &kp F          &kp G      &kp H  &kp J           &kp K          &kp L         &kp SEMI
+&ht LSHFT Z  &ht LCTRL X  &ht LALT C  &kp V          &kp B      &kp N  &kp M  &ht RALT COMMA  &ht RCTRL DOT  &ht RSHFT SLASH
+                            &kp LGUI  &mo 1  &kp BACKSPACE  &kp SPACE  &mo 2           &mo 3
+            >;
+        };
 
-      Lower {
-        label = "Lower";
-        bindings = <
-          &bt BT_CLR   &trans      &kp ESC  &kp TILDE &trans     &kp TAB  &kp HOME &kp UP   &kp END   &kp DEL
-          &bt BT_SEL 0 &kp K_CMENU &kp RALT &kp LCTRL &mo 3      &kp FSLH &kp LEFT &kp DOWN &kp RIGHT &kp BSPC
-          &bt BT_SEL 1 &trans      &trans   &trans    &trans     &kp BSLH &kp RET  &trans   &trans    &trans
-                    &trans   &trans    &trans     &trans   &trans   &trans
-                   >;
-            };
+        Lower {
+            label = "Lower";
+            bindings = <
+&kp EXCL     &kp AT           &kp HASH  &kp DOLLAR  &kp PERCENT  &kp CARET   &kp AMPS  &kp ASTRK  &kp LPAR  &kp RPAR
+  &trans  &kp TILDE  &kp DOUBLE_QUOTES    &kp PIPE       &trans     &trans  &kp UNDER   &kp PLUS  &kp LBRC  &kp RBRC
+  &trans     &trans             &trans      &trans       &trans     &trans     &trans     &trans    &trans    &trans
+                                &trans      &trans       &trans     &trans     &trans     &trans
+            >;
+        };
 
-      Upper {
-        label = "Upper";
-        bindings = <
-          &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR
-          &trans    &trans    &trans    &trans    &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp PIPE
-          &trans    &trans    &trans    &trans    &trans      &trans    &trans    &trans          &trans   &kp BSLH
-                    &kp LGUI  &trans    &kp SPACE   &kp RET   &trans    &kp RALT
-                   >;
-            };
+        Upper {
+            label = "Upper";
+            bindings = <
+&kp NUMBER_1     &kp N2            &kp N3    &kp N4  &kp N5  &kp N6     &kp N7     &kp N8    &kp N9    &kp N0
+      &trans  &kp GRAVE  &kp SINGLE_QUOTE  &kp BSLH  &trans   &none  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT
+      &trans     &trans            &trans    &trans  &trans  &trans     &trans     &trans    &trans    &trans
+                                   &trans    &trans  &trans  &trans     &trans     &trans
+            >;
+        };
 
-      Function {
-        label = "Function";
-        bindings = <
-          &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR
-          &trans    &trans    &trans    &trans    &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp PIPE
-          &trans    &trans    &trans    &trans    &trans      &trans    &trans    &trans          &trans   &kp BSLH
-                    &kp LGUI  &trans    &kp SPACE   &kp RET   &trans    &kp RALT
-                   >;
-               };
-      };
+        Function {
+            label = "Function";
+            bindings = <
+&kp TAB        &trans  &kp C_VOL_UP        &trans  &trans     &trans      &trans    &trans  &trans   &kp ENTER
+&kp ESC  &kp C_BRI_DN  &kp C_VOL_DN  &kp C_BRI_UP  &trans     &trans    &kp LEFT  &kp DOWN  &kp UP   &kp RIGHT
+ &trans        &trans        &trans        &trans  &trans     &trans  &bt BT_PRV    &trans  &trans  &bt BT_NXT
+                             &trans        &trans   &to 4  &kp C_PWR      &trans    &trans
+            >;
+        };
 
-      Locked {
+        Locked {
+            bindings = <
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+              &none  &none  &none  &none  &none  &none
+            >;
+        };
+    };
+
+    Locked {
         label = "Locked";
         bindings = <
           &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR
           &trans    &trans    &trans    &trans    &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp PIPE
           &trans    &trans    &trans    &trans    &trans      &trans    &trans    &trans          &trans   &kp BSLH
                     &kp LGUI  &trans    &kp SPACE   &kp RET   &trans    &kp RALT
-                   >;
-             };
+        >;
+    };
 };
