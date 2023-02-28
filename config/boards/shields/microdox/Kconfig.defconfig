@@ -1,17 +1,17 @@
 # Copyright (c) 2020 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
-if SHIELD_MICRODOX_V2_LEFT
+if SHIELD_MICRODOX_LEFT
 
 config ZMK_KEYBOARD_NAME
-	default "Microdox V2"
+	default "Microdox"
 
 config ZMK_SPLIT_ROLE_CENTRAL
 	default y
 
 endif
 
-if SHIELD_MICRODOX_V2_LEFT || SHIELD_MICRODOX_V2_RIGHT
+if SHIELD_MICRODOX_LEFT || SHIELD_MICRODOX_RIGHT
 
 config ZMK_SPLIT
 	default y
