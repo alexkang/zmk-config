@@ -1,0 +1,16 @@
+if SHIELD_RHYMESTONE_LEFT
+
+config ZMK_KEYBOARD_NAME
+  default "Rhymestone"
+
+config ZMK_SPLIT_BLE_ROLE_CENTRAL
+  default y
+
+endif
+
+if SHIELD_RHYMESTONE_LEFT || SHIELD_RHYMESTONE_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif
