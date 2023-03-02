@@ -28,7 +28,7 @@
 
         Unlock {
             bindings = <&to 0>;
-            key-positions = <34 16 19 31 13 10>;
+            key-positions = <34 16 31 13>;
             layers = <4>;
         };
 
