@@ -14,8 +14,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_TAP";
             #binding-cells = <2>;
-            tapping-term-ms = <140>;
-            quick-tap-ms = <140>;
+            tapping-term-ms = <135>;
+            quick-tap-ms = <200>;
             flavor = "balanced";
             bindings =
                 <&kp>,
@@ -34,7 +34,7 @@
 
         BT-Clear {
             bindings = <&bt BT_CLR>;
-            key-positions = <29 26>;
+            key-positions = <28 27>;
             layers = <3>;
         };
     };
