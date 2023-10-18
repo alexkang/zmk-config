@@ -1,0 +1,77 @@
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+#include "keymap.dtsi"
+
+/ {
+    chosen {
+       zmk,matrix_transform = &dual_2u_transform;
+    };
+
+    UNLOCK_COMBO(<11 40 41>)
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        base {
+            label = "Base";
+            bindings = <
+&kp Q       &kp W     &kp E    &kp R     &kp T          &kp ESC      &kp C_PWR       &kp Y &kp U        &kp I          &kp O         &kp P
+&kp A       &kp S     &kp D    &kp F     &kp G          &kp PG_DN    &kp PG_UP       &kp H &kp J        &kp K          &kp L         &kp SEMI
+&mt LSHFT Z &kp X     &kp C    &kp V     &kp B          &kp C_VOL_DN &kp C_VOL_UP    &kp N &kp M        &mt RALT COMMA &mt RCTRL DOT &mt RSHFT SLASH
+&kp GLOBE   &kp LCTRL &kp LALT &guiglobe &lt LOWER BSPC              &lt UPPER SPACE       &mo FUNCTION &kp RGUI       &kp RALT      &kp RCTRL
+            >;
+        };
+
+        lower {
+            label = "Lower";
+            bindings = <
+&kp EXCL &kp AT    &kp HASH &kp DLLR &kp PRCNT &trans &trans &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR
+&trans   &kp TILDE &kp DQT  &kp PIPE &trans    &trans &trans &trans    &kp UNDER &kp PLUS  &kp LBRC &kp RBRC
+&trans   &trans    &trans   &trans   &trans    &trans &trans &trans    &trans    &trans    &trans   &trans
+&trans   &trans    &trans   &trans   &trans           &trans           &trans    &trans    &trans   &trans
+            >;
+        };
+
+        upper {
+            label = "Upper";
+            bindings = <
+&kp N1 &kp N2    &kp N3  &kp N4   &kp N5 &trans &trans &kp N6 &kp N7    &kp N8    &kp N9   &kp N0
+&trans &kp GRAVE &kp SQT &kp BSLH &trans &trans &trans &trans &kp MINUS &kp EQUAL &kp LBKT &kp RBKT
+&trans &trans    &trans  &trans   &trans &trans &trans &trans &trans    &trans    &trans   &trans
+&trans &trans    &trans  &trans   &trans        &trans        &trans    &trans    &trans   &trans
+            >;
+        };
+
+        function {
+            label = "Function";
+            bindings = <
+&kp TAB &trans &trans &trans &trans &trans       &trans       &trans &trans   &trans   &trans &kp ENTER
+&kp ESC &trans &trans &trans &trans &trans       &trans       &trans &kp LEFT &kp DOWN &kp UP &kp RIGHT
+&trans  &trans &trans &trans &trans &kp C_BRI_DN &kp C_BRI_UP &trans &trans   &trans   &trans &trans
+&trans  &trans &trans &trans &trans              &trans              &trans &trans   &trans   &trans
+            >;
+        };
+
+        meta {
+            label = "Meta";
+            bindings = <
+&none &none &none &none &none &none  &none  &none        &none        &none        &none        &to 5
+&none &none &none &none &none &none  &none  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
+&none &none &none &none &none &none  &none  &none        &none        &bt BT_CLR   &none        &none
+&none &none &none &none &trans       &trans              &none        &none        &none        &none
+            >;
+        };
+
+        locked {
+            label = "Locked";
+            bindings = <
+&none &none &none &none &none &none &none &none &none &none &none &none
+&none &none &none &none &none &none &none &none &none &none &none &none
+&none &none &none &none &none &none &none &none &none &none &none &none
+&none &none &none &none &none       &none       &none &none &none &none
+            >;
+        };
+    };
+};
+

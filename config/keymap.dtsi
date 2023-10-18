@@ -1,0 +1,58 @@
+#include <behaviors.dtsi>
+
+// Layers
+#define BASE     0
+#define LOWER    1
+#define UPPER    2
+#define FUNCTION 3
+#define META     4
+#define LOCKED   5
+
+// Hold params
+#define TAPPING_TERM_MS <140>
+#define TAP_DANCE_TAPPING_TERM_MS <200>
+#define QUICK_TAP_MS    <200>
+#define HOLD_TAP_FLAVOR "balanced"
+
+// Unlock combo
+#define UNLOCK_COMBO(key_positions) \
+combos { \
+    compatible = "zmk,combos"; \
+    Unlock { \
+        bindings = <&to BASE>; \
+        key-positions = key_positions; \
+        layers = <LOCKED>; \
+    }; \
+};
+
+&lt {
+    tapping-term-ms = TAPPING_TERM_MS;
+    quick-tap-ms = QUICK_TAP_MS;
+    flavor = HOLD_TAP_FLAVOR;
+};
+
+&mt {
+    tapping-term-ms = TAPPING_TERM_MS;
+    quick-tap-ms = QUICK_TAP_MS;
+    flavor = HOLD_TAP_FLAVOR;
+};
+
+/ {
+    behaviors {
+        guiglobe: gui_globe {
+            compatible = "zmk,behavior-tap-dance";
+            label = "GUI_GLOBE";
+            #binding-cells = <0>;
+            tapping-term-ms = TAP_DANCE_TAPPING_TERM_MS;
+            bindings = <&kp LGUI>, <&kp GLOBE>;
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <LOWER UPPER>;
+            then-layer = <META>;
+        };
+    };
+};
