@@ -37,9 +37,9 @@
       bindings = <
                      &trans           &trans            &trans           &trans     &trans     &trans     &trans
                      &rgb_ug RGB_HUD  &rgb_ug RGB_HUI   &rgb_ug RGB_TOG  &trans     &kp UP     &trans     &trans
-        &trans       &rgb_ug RGB_BRD  &rgb_ug RGB_BRI   &trans           &kp RIGHT  &kp DOWN   &kp LEFT   &trans
-        &sys_reset   &rgb_ug RGB_EFR  &rgb_ug RGB_EFF   &trans           &trans     &trans     &trans     &trans           
-        &bootloader  &trans           &trans            &trans                      &trans                &trans
+        &sys_reset   &rgb_ug RGB_BRD  &rgb_ug RGB_BRI   &trans           &kp RIGHT  &kp DOWN   &kp LEFT   &trans
+        &bootloader  &rgb_ug RGB_EFR  &rgb_ug RGB_EFF   &trans           &trans     &trans     &trans     &trans           
+        &trans       &trans           &trans            &trans                      &trans                &trans
       >;
     };
 
